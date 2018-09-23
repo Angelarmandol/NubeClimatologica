@@ -86,25 +86,32 @@ void loop() {
     
   }
 
- 
-String nombre = GetInfo( line, "name", ",") ;
-Serial.println("nombre k  ");
-Serial.print(nombre);
+Serial.println("  - finjson");
+String nombre = GetInfo( line, "name\":\"", "\",") ;
+Serial.println("nombre "+nombre);
 
-String temperatura= GetInfo( line, "temp", ",") ;
-Serial.println("temperatura k  ");
-Serial.print(temperatura);
 
-String humedad= GetInfo( line, "humidity", ",") ;
-Serial.println("humedad   ");
-Serial.print(humedad);
+String temperatura= GetInfo( line, "temp\":", ",") ;
+Serial.println("temperatura "+temperatura);
 
-String nubes = GetInfo( line, "clouds", ",") ;
-Serial.println("nubes   ");
-Serial.print(nubes);
+String humedad= GetInfo( line, "humidity\":", ",") ;
+Serial.println("humedad "+humedad);
+
+String nubes = GetInfo( line, "\"all\":", "},") ;
+Serial.println("nubes "+nubes+"%");
 
  
 
+String climaMain = GetInfo( line, "main\":\"", "\",") ;
+Serial.println("Clima Main "+climaMain);
+
+String cielo = GetInfo( line, "description\":\"", "\",") ;
+Serial.println("cielo "+cielo);
+
+ 
+
+
+ 
 
   
  
@@ -120,7 +127,7 @@ Serial.print(nubes);
   
 }
 
-String GetInfo( String &line, String t1, String t2 ){   
+String GetInfo( String line, String t1, String t2 ){   
   
   int n = line.indexOf( t1 );
        if (n)
