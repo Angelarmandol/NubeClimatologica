@@ -1,0 +1,64 @@
+Volume down:             7E FF 06 05 00 00 00 EF   
+Volume up:               7E FF 06 04 00 00 00 EF
+
+
+next:                    7E FF 06 01 00 00 00 EF
+play raiz 1:             7E FF 06 03 00 00 01 EF
+play raiz 2:             7E FF 06 03 00 00 02 EF
+single cicple play       7E FF 06 08 00 00 01 EF 
+
+el cielo esta despejado: 7E FF 06 03 00 00 03 EF
+hay algunas nubes        7E FF 06 03 00 00 04 EF
+hay nubes dispersas      7E FF 06 03 00 00 05 EF
+hay ligeras luvias       7E FF 06 03 00 00 06 EF
+esta lloviendo           7E FF 06 03 00 00 07 EF
+hay una tormenta         7E FF 06 03 00 00 08 EF
+hay nieve                7E FF 06 03 00 00 09 EF
+hay brisa                7E FF 06 03 00 00 0A EF
+grados                   7E FF 06 03 00 00 0B EF
+centigrados              7E FF 06 03 00 00 0C EF
+la humedad esta al       7E FF 06 03 00 00 0D EF
+la tmperatura es de      7E FF 06 03 00 00 0E EF
+porciento                7E FF 06 03 00 00 0F EF
+las nubes                7E FF 06 03 00 00 10 EF
+estan al                 7E FF 06 03 00 00 11 EF
+nubes al                 7E FF 06 03 00 00 12 EF
+condicion climatica act  7E FF 06 03 00 00 13 EF
+al                       7E FF 06 03 00 00 14 EF
+demostracion             7E FF 06 03 00 00 15 EF
+con. intern, no disp     7E FF 06 03 00 00 16 EF
+
+
+uno                      7E FF 06 03 00 00 17 EF
+dos                      7E FF 06 03 00 00 18 EF
+tres                     7E FF 06 03 00 00 19 EF
+Cuatro                   7E FF 06 03 00 00 1A EF
+cinco                    7E FF 06 03 00 00 1B EF
+seis                     7E FF 06 03 00 00 1C EF
+siete                    7E FF 06 03 00 00 1D EF
+ocho                     7E FF 06 03 00 00 1E EF
+nueve                    7E FF 06 03 00 00 1F EF
+dies                     7E FF 06 03 00 00 20 EF
+once                     7E FF 06 03 00 00 21 EF
+todo                     7E FF 06 03 00 00 22 EF
+trece                    7E FF 06 03 00 00 23 EF
+catorce                  7E FF 06 03 00 00 24 EF
+quice                    7E FF 06 03 00 00 25 EF
+diesi                    7E FF 06 03 00 00 26 EF
+veinte                   7E FF 06 03 00 00 27 EF
+veinti                   7E FF 06 03 00 00 28 EF
+treinta                  7E FF 06 03 00 00 29 EF
+treintai                 7E FF 06 03 00 00 2A EF
+cuarenta                 7E FF 06 03 00 00 2B EF
+cuarentai                7E FF 06 03 00 00 2C EF
+cincuenta                7E FF 06 03 00 00 2D EF
+cincuentai               7E FF 06 03 00 00 2E EF
+sesenta                  7E FF 06 03 00 00 2F EF
+sesentai                 7E FF 06 03 00 00 30 EF
+setenta                  7E FF 06 03 00 00 31 EF
+setentai                 7E FF 06 03 00 00 32 EF
+ochenta                  7E FF 06 03 00 00 33 EF
+ochentai                 7E FF 06 03 00 00 34 EF
+noventa                  7E FF 06 03 00 00 35 EF
+noventai                 7E FF 06 03 00 00 35 EF
+noventai                 7E FF 06 03 00 00 35 EF
