@@ -35,7 +35,7 @@ static int8_t Send_buf[8] = {0} ;//The MP3 player undestands orders in a 8 int s
 //////////////////////////////////////////////////////////////////////////////////// 
 
 const char* ssid = "adg0"; 
-const char* password = ""; 
+const char* password = "12341234"; 
  
 const char* host = "api.openweathermap.org";
 const char * cityId = "6942831";
@@ -68,6 +68,7 @@ delay(200);//wait for 200ms
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
+      
   }
  
   Serial.println("");
@@ -84,7 +85,9 @@ void loop() {
   WiFiClient client;
   const int httpPort = 80; 
   if (!client.connect(host, httpPort)) {
-    Serial.println("Ha fallado la conexión");
+    Serial.println("Ha fallado la conexión"); 
+    sendCommand(CMD_PLAY_W_INDEX, 0X0016);// con internet no disp 
+    delay(10000);
     return;
   }
  
@@ -108,7 +111,7 @@ void loop() {
   while (client.available() == 0) {
     if (millis() - timeout > 5000) {
       Serial.println(">>> Superado el tiempo de espera !");
-      sendCommand(CMD_PLAY_W_INDEX, 0X0016);// con internet no disp 
+     
       client.stop();
       return;
     }
@@ -137,7 +140,7 @@ String humedad= GetInfo( line, "humidity\":", ",") ;
 Serial.println("humedad "+humedad);
 
 String nubes = GetInfo( line, "\"all\":", "},") ;
-Serial.println("nubes "+nubes+"%");
+Serial.println("nubes "+nubes);
 
  
 
@@ -158,7 +161,11 @@ delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X000B);// grados
 sendCommand(CMD_PLAY_W_INDEX, 0X000C);// centigrados
 delay(3200);
- 
+sendCommand(CMD_PLAY_W_INDEX, 0X0012);// nubes al
+delay(3300);
+unoa15(nubes);
+
+
 
 
   Serial.println("Cerrando la conexión");
@@ -223,52 +230,123 @@ Serial.print(numero);
 
 switch((int)numero){
 
+case 20:
+sendCommand(CMD_PLAY_W_INDEX, 0X0027);// veinte
+break;
+
+case 21:
+sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
+delay(500);
+sendCommand(CMD_PLAY_W_INDEX, 0X0017);// uno
+break;
+
+case 22:
+sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
+delay(500);
+sendCommand(CMD_PLAY_W_INDEX, 0X0018);// dos
+break;
+
+case 23:
+sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
+delay(500);
+sendCommand(CMD_PLAY_W_INDEX, 0X0019);// tres
+break;
+
+case 24:
+sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
+delay(500);
+sendCommand(CMD_PLAY_W_INDEX, 0X001A);// cuatr
+break;
+
+case 25:
+sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
+delay(500);
+sendCommand(CMD_PLAY_W_INDEX, 0X001B);// cinco
+break;
+
+case 26:
+sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
+delay(500);
+sendCommand(CMD_PLAY_W_INDEX, 0X001C);// seis
+break;
+
+case 27:
+sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
+delay(500);
+sendCommand(CMD_PLAY_W_INDEX, 0X001D);// siete
+break;
+
+case 28:
+sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
+delay(500);
+sendCommand(CMD_PLAY_W_INDEX, 0X001E);// ocho
+break;
+
+case 29:
+sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
+delay(500);
+sendCommand(CMD_PLAY_W_INDEX, 0X001F);// nueve
+break;
+
+
+
+/////
+
 case 30:
 sendCommand(CMD_PLAY_W_INDEX, 0X0029);// treinta
 break;
 
 case 31:
 sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
+delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X0017);// uno
 break;
 
 case 32:
 sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
+delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X0018);// dos
 break;
 
 case 33:
 sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
+delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X0019);// tres
 break;
 
 case 34:
 sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
+delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X001A);// cuatr
 break;
 
 case 35:
 sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
+delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X001B);// cinco
 break;
 
 case 36:
 sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
+delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X001C);// seis
 break;
 
 case 37:
 sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
+delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X001D);// siete
 break;
 
 case 38:
 sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
+delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X001E);// ocho
 break;
 
 case 39:
 sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
+delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X001F);// nueve
 break;
 
@@ -279,31 +357,36 @@ break;
 
 case 41:
 sendCommand(CMD_PLAY_W_INDEX, 0X002C);// cuarentai
+delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X0017);// uno
 break;
 
 case 42:
 sendCommand(CMD_PLAY_W_INDEX, 0X002C);// cuarentai
+delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X0018);// dos
 break;
 
 case 43:
 sendCommand(CMD_PLAY_W_INDEX, 0X002C);// cuarentai
+delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X0019);// tres
 break;
 
 case 44:
 sendCommand(CMD_PLAY_W_INDEX, 0X002C);// cuarentai
+delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X001A);// cuatr
 break;
 case 45:
 sendCommand(CMD_PLAY_W_INDEX, 0X002C);// cuarentai
+delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X001B);// cinco
 break;
 }// fin de switch
 
 
-
+ 
   
 }
 
@@ -322,4 +405,97 @@ temperatura = temperatura - 273.15;
 Serial.println("resultado "); 
 Serial.print(temperatura);
 return temperatura;
+}
+
+
+
+
+void unoa15(String numeroCadena){
+Serial.println("entra"+numeroCadena);
+
+Serial.println("----------------nubes nstring: ");
+Serial.print(numeroCadena);
+
+
+switch(numeroCadena.charAt(0)){
+
+case 20:
+
+break;
+
+case 1:
+
+sendCommand(CMD_PLAY_W_INDEX, 0X0017);// uno
+break;
+
+case 2:
+
+sendCommand(CMD_PLAY_W_INDEX, 0X0018);// dos
+break;
+
+case 3:
+
+sendCommand(CMD_PLAY_W_INDEX, 0X0019);// tres
+break;
+
+case 4:
+
+sendCommand(CMD_PLAY_W_INDEX, 0X001A);// cuatr
+break;
+
+case 5:
+
+sendCommand(CMD_PLAY_W_INDEX, 0X001B);// cinco
+break;
+
+case 6:
+
+sendCommand(CMD_PLAY_W_INDEX, 0X001C);// seis
+break;
+
+case 7:
+
+sendCommand(CMD_PLAY_W_INDEX, 0X001D);// siete
+break;
+
+case 8:
+
+sendCommand(CMD_PLAY_W_INDEX, 0X001E);// ocho
+break;
+
+case 9:
+
+sendCommand(CMD_PLAY_W_INDEX, 0X001F);// nueve
+break;
+
+case 10:
+sendCommand(CMD_PLAY_W_INDEX, 0X0020);// dies
+break;
+
+
+case 11:
+sendCommand(CMD_PLAY_W_INDEX, 0X0021);// once
+break;
+
+case 12:
+sendCommand(CMD_PLAY_W_INDEX, 0X0022);// doce
+break;
+
+case 13:
+sendCommand(CMD_PLAY_W_INDEX, 0X0023);// trece
+break;
+
+case 14:
+sendCommand(CMD_PLAY_W_INDEX, 0X0024);// catorce
+break;
+
+case 15:
+sendCommand(CMD_PLAY_W_INDEX, 0X0025);// quince
+break;
+
+}// fin de switch
+delay(1000);
+sendCommand(CMD_PLAY_W_INDEX, 0X000F);// porciento
+
+  
 }
