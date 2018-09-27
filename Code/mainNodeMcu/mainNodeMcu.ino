@@ -411,87 +411,68 @@ return temperatura;
 
 
 void unoa15(String numeroCadena){
-Serial.println("entra"+numeroCadena);
+Serial.println(numeroCadena[0]);
 
-Serial.println("----------------nubes nstring: ");
-Serial.print(numeroCadena);
+numeroCadena=numeroCadena+"";
+int charPrimerDigito = numeroCadena[0]+0;
+Serial.println("entra");
+Serial.print("-");
+Serial.println(charPrimerDigito-48);
+Serial.print("-");
+Serial.print("sale");
+
+ 
 
 
-switch(numeroCadena.charAt(0)){
+switch(charPrimerDigito){
 
-case 20:
 
-break;
 
-case 1:
+case 49:
 
 sendCommand(CMD_PLAY_W_INDEX, 0X0017);// uno
 break;
 
-case 2:
+case 50:
 
 sendCommand(CMD_PLAY_W_INDEX, 0X0018);// dos
 break;
 
-case 3:
+case 51:
 
 sendCommand(CMD_PLAY_W_INDEX, 0X0019);// tres
 break;
 
-case 4:
+case 52:
 
 sendCommand(CMD_PLAY_W_INDEX, 0X001A);// cuatr
 break;
 
-case 5:
+case 53:
 
 sendCommand(CMD_PLAY_W_INDEX, 0X001B);// cinco
 break;
 
-case 6:
+case 54:
 
 sendCommand(CMD_PLAY_W_INDEX, 0X001C);// seis
 break;
 
-case 7:
+case 55:
 
 sendCommand(CMD_PLAY_W_INDEX, 0X001D);// siete
 break;
 
-case 8:
+case 56:
 
 sendCommand(CMD_PLAY_W_INDEX, 0X001E);// ocho
 break;
 
-case 9:
+case 57:
 
 sendCommand(CMD_PLAY_W_INDEX, 0X001F);// nueve
 break;
 
-case 10:
-sendCommand(CMD_PLAY_W_INDEX, 0X0020);// dies
-break;
-
-
-case 11:
-sendCommand(CMD_PLAY_W_INDEX, 0X0021);// once
-break;
-
-case 12:
-sendCommand(CMD_PLAY_W_INDEX, 0X0022);// doce
-break;
-
-case 13:
-sendCommand(CMD_PLAY_W_INDEX, 0X0023);// trece
-break;
-
-case 14:
-sendCommand(CMD_PLAY_W_INDEX, 0X0024);// catorce
-break;
-
-case 15:
-sendCommand(CMD_PLAY_W_INDEX, 0X0025);// quince
-break;
 
 }// fin de switch
 delay(1000);
