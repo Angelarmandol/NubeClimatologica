@@ -166,7 +166,12 @@ delay(3300);
 unoa15(nubes);
 
 
-
+dictar(temperatura);
+char temperaturaChar [1];
+temperatura.toCharArray(temperaturaChar, 1);
+Serial.println("priimer valor d e la cadena"+temperaturaChar[0]);
+Serial.println("segundo valor d e la cadena"+temperaturaChar[1]);
+dictarChar(temperaturaChar);
 
   Serial.println("Cerrando la conexión");
  
@@ -416,9 +421,9 @@ Serial.println(numeroCadena[0]);
 numeroCadena=numeroCadena+"";
 int charPrimerDigito = numeroCadena[0]+0;
 Serial.println("entra");
-Serial.print("-");
+Serial.print("*");
 Serial.println(charPrimerDigito-48);
-Serial.print("-");
+Serial.print("*");
 Serial.print("sale");
 
  
@@ -480,3 +485,46 @@ sendCommand(CMD_PLAY_W_INDEX, 0X000F);// porciento
 
   
 }
+
+
+
+ 
+
+
+void dictar(String cadena){
+delay(100);
+ Serial.print("entra al metodo");
+int primerDigito = cadena.toInt();
+primerDigito = primerDigito-48;
+Serial.println("El primer digito es :"+primerDigito);
+
+int segundoDigito = cadena[1]+0;
+segundoDigito = segundoDigito-48;
+Serial.println("El segundo digito es :"+segundoDigito);
+
+
+
+
+  
+}
+
+
+
+
+void dictarChar(char cadena[]){
+
+delay(100);
+Serial.print("entra al metodo de char");
+int primerDigito = cadena[0]+1;
+primerDigito = primerDigito -48;
+Serial.println("El primer digito es :"+primerDigito);
+
+int segundoDigito = cadena[1]+0;
+segundoDigito =segundoDigito -48;
+Serial.println("El segundo digito es :"+segundoDigito);
+
+}
+
+
+
+  
