@@ -11,20 +11,21 @@ Desarrollo
 La información formateada se recibirá en un módulo NodeMCU a través de una petición a un servicio de OpenWeatherMap que devolverá un archivo JSON. Esta información será procesada y según las reglas establecidas la electrónica dictara la prediccion y realizará un show de luces además de dictarse en voz alta.
 
 
-ube Climatologica
+Nube Climatologica
 https://lh6.googleusercontent.com/XJ0VMgwvNYQPqAptHYOXUW8JBV3aBWklKoBumIrQ9wY3uMBzvQlkGui6oQGEIZ-KVyWTQQLKPxXpMFzNkioIPip5NNzhZaU3AmGwUw9oA9ThvHpu0DPbx2R9ewLny6ZRztKyV3dL
 
 Instituto Tecnológico de Mexicali
 
 
-
+Nueva entrada
+https://programacion.net/articulo/pronostico_del_tiempo_utilizando_openweathermap_mediante_php_2035
 
 
 Nube Climatologica
 
 Taller de investigación II
 
-Introducción a Prolog.
+ 
 
 
 
@@ -46,24 +47,7 @@ Ingeniería en sistemas computacionales
 
 
 
-
-Introducción        3
-
-Desarrollo        3
-
-Opciones de clima        4
-
-Módulo MP3        4
-
-Materiales        5
-
-Lista de materiales:        5
-
-Diagrama de componentes (Anteproyecto).        5
-
-Anexos        5
-
-Parameters:        6
+ 
 
 
  
