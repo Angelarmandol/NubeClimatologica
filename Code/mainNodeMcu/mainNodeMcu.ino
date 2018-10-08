@@ -173,17 +173,19 @@ Serial.println("------------------------------------------------------------");
 
  float tempf = kelvinToCelcius(temperatura);
  String tempSf = String(tempf);
-dictar(tempSf);
 
-Serial.println("Se espera combertir "+tempSf);
+
+Serial.println("Se espera comvertir "+tempSf);
 char temperaturaChar [4];
 tempSf.toCharArray(temperaturaChar, 4);
 
 Serial.println("priimer valor d e la cadena"+temperaturaChar[0]);
 delay(10);
 Serial.println("segundo valor d e la cadena"+temperaturaChar[1]);
-delay(10);
-dictarChar(temperaturaChar);
+delay(100);
+
+dictar(tempSf);
+ 
 
   Serial.println("Cerrando la conexión");
  
@@ -505,36 +507,23 @@ sendCommand(CMD_PLAY_W_INDEX, 0X000F);// porciento
 
 void dictar(String cadena)
 {
-  delay(100);
-  Serial.print("entra al metodo");
-  int primerDigito = cadena.toInt();
-  primerDigito = primerDigito-48;
-  Serial.println("El primer digito es :"+primerDigito);
+ 
+  Serial.println("---------------");
 
-  int segundoDigito = cadena[1]+0;
-  segundoDigito = segundoDigito-48;
-  Serial.println("El segundo digito es :"+segundoDigito);
+  char pd = cadena.charAt(0);
+  char sd = cadena.charAt(1);
 
-}
+  Serial.println("primer digito char: "+String(pd)+" segundo digito char es: "+String(sd));
 
 
 
 
-void dictarChar(char cadena[])
-
-{
-
-  delay(100);
-  Serial.print("entra al metodo de char");
-  int primerDigito = cadena[0]+1;
-  primerDigito = primerDigito -48;
-  Serial.println("El primer digito es :"+primerDigito);
-
-  int segundoDigito = cadena[1]+0;
-  segundoDigito =segundoDigito -48;
-  Serial.println("El segundo digito es :"+segundoDigito);
 
 }
+
+
+
+ 
 
 
 
