@@ -417,7 +417,7 @@ Serial.println("----------------nubes nstring: ");
 Serial.print(numeroCadena);
 
 
-switch(numeroCadena.charAt(0)){
+switch(numeroCadena.charAt(0) ){
 
 case 20:
 
