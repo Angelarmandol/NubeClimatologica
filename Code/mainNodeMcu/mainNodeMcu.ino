@@ -166,18 +166,24 @@ sendCommand(CMD_PLAY_W_INDEX, 0X0012);// nubes al
 delay(3300);
 unoa15(nubes);
 
-*/
+ */
 
 Serial.println("------------------------------------------------------------");
 
-String temp2 = temperatura;
-//dictar(temp2);
 
-char temperaturaChar [1];
-temperatura.toCharArray(temperaturaChar, 1);
+ float tempf = kelvinToCelcius(temperatura);
+ String tempSf = String(tempf);
+dictar(tempSf);
+
+Serial.println("Se espera combertir "+tempSf);
+char temperaturaChar [4];
+tempSf.toCharArray(temperaturaChar, 4);
+
 Serial.println("priimer valor d e la cadena"+temperaturaChar[0]);
+delay(10);
 Serial.println("segundo valor d e la cadena"+temperaturaChar[1]);
-//dictarChar(temperaturaChar);
+delay(10);
+dictarChar(temperaturaChar);
 
   Serial.println("Cerrando la conexión");
  
@@ -406,15 +412,15 @@ break;
 
 
 float kelvinToCelcius(String numeroCadenak){
-Serial.println("combertir "+numeroCadenak);
+//Serial.println("combertir "+numeroCadenak);
 float temperatura; 
  
 temperatura = numeroCadenak.toFloat();
-Serial.println("antes de combertir, ya en entero ");
-Serial.print(temperatura);
+//Serial.println("antes de combertir, ya en entero ");
+//Serial.print(temperatura);
 temperatura = temperatura - 273.15;
-Serial.println("resultado "); 
-Serial.print(temperatura);
+//Serial.println("resultado "); 
+//Serial.print(temperatura);
 return temperatura;
 }// fin kelvin to celcius
 
