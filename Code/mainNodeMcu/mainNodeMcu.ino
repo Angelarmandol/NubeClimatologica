@@ -515,11 +515,66 @@ void dictar(String cadena)
 
   Serial.println("primer digito char: "+String(pd)+" segundo digito char es: "+String(sd));
 
+  int pdEntero =(int) String(pd).toInt();
+  int sdEntero = (int) String(sd).toInt();
+ 
+   
+ 
 
+if(String(sdEntero)==0)
+{
 
+//terminacion cero
+  
+}else{
+  //normal
 
+switch(pdEntero){
+  
+  case 1:
+  Serial.println("dieci");
+  break;
+
+  case 2:
+  Serial.println("veinti");
+  break;
+  
+  case 3:
+  Serial.println("veinti");
+  break;
+
+  case 4:
+  Serial.println("veinti");
+  break;
+
+  case 5:
+  Serial.println("veinti");
+  break;
+
+  case 6:
+  Serial.println("veinti");
+  break;
+
+  case 7:
+  Serial.println("veinti");
+  break;
+
+  case 8:
+  Serial.println("veinti");
+  break;
+
+  case 9:
+  Serial.println("veinti");
+  break;
 
 }
+
+  
+}
+
+  
+
+}//fin dictar
 
 
 
