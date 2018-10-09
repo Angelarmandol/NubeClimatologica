@@ -532,31 +532,27 @@ void dictar(String cadena){
             break;
             
             case 20:
-            
+            sendCommand(CMD_PLAY_W_INDEX, 0X0027);// veinte
             break;
 
             case 30:
-            
+            sendCommand(CMD_PLAY_W_INDEX, 0X0029);// treinta
             break;
             
             case 40:
-            
+            sendCommand(CMD_PLAY_W_INDEX, 0X002B);// cuarenta
             break;
             
             case 50:
-            
+            sendCommand(CMD_PLAY_W_INDEX, 0X002D);// cincuenta
             break;
             
             case 60:
-            
+            sendCommand(CMD_PLAY_W_INDEX, 0X002F);// sesenta
             break;
-            
-            case 60:
-            
-            break;
-            
+        
             case 70:
-            
+            sendCommand(CMD_PLAY_W_INDEX, 0X0031);// setenta
             break;
             
             case 80:
