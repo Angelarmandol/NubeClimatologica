@@ -21,7 +21,7 @@ static int8_t Send_buf[8] = {0} ;//The MP3 player undestands orders in a 8 int s
 #define SET_DAC 0X17 
 #define CMD_PLAY_WITHVOLUME 0X22 //data is needed  0x7E 06 22 00 xx yy EF;(xx volume)(yy number of song) 
 #define CMD_SEL_DEV 0X09 //SELECT STORAGE DEVICE, DATA IS REQUIRED 
-               #define DEV_TF 0X02 //HELLO,IM THE DATA REQUIRED 
+#define DEV_TF 0X02 //HELLO,IM THE DATA REQUIRED 
 #define SLEEP_MODE_START 0X0A 
 #define SLEEP_MODE_WAKEUP 0X0B 
 #define CMD_RESET 0X0C//CHIP RESET 
@@ -36,7 +36,6 @@ static int8_t Send_buf[8] = {0} ;//The MP3 player undestands orders in a 8 int s
 
 const char* ssid = "adg0"; 
 const char* password = "12341234"; 
- 
 const char* host = "api.openweathermap.org";
 const char * cityId = "6942831";
 const char* apiKey = "171f3d5eed4e72c670326a5f9ef80990";  
@@ -46,17 +45,14 @@ String line;
  
 void setup() {
 
-    Serial.begin(9600);
+Serial.begin(9600);
 mySerial.begin(9600);//Start our Serial coms for our serial monitor! 
 delay(500);//Wait chip initialization is complete 
-  sendCommand(CMD_SEL_DEV, DEV_TF);//select the TF card   
+sendCommand(CMD_SEL_DEV, DEV_TF);//select the TF card   
 delay(200);//wait for 200ms 
-
-  delay(10);
  
   // Conectamos a la red WiFi
  
-  Serial.println();
   Serial.println();
   Serial.print("Connecting to ");
   Serial.println(ssid);
@@ -96,14 +92,12 @@ void loop() {
   url += "&APPID=";
   url += apiKey;
   
- 
   Serial.print("URL de la petición: http://");
   Serial.print(host);
   Serial.print(":");
   Serial.print(httpPort);
   Serial.println(url);
  
-
   client.print(String("GET ") + url + " HTTP/1.1\r\n" +
          "Host: " + host + "\r\n" + 
          "Connection: close\r\n\r\n");
@@ -132,7 +126,6 @@ Serial.println("  - finjson");
 String nombre = GetInfo( line, "name\":\"", "\",") ;
 Serial.println("nombre "+nombre);
 
-
 String temperatura= GetInfo( line, "temp\":", ",") ;
 Serial.println("temperatura "+temperatura);
 
@@ -151,28 +144,29 @@ String cielo = GetInfo( line, "description\":\"", "\",") ;
 Serial.println("cielo "+cielo);
 
 
- /*
+ /* MEtodo 
 sendCommand(CMD_PLAY_W_INDEX, 0X0013);// condicion climatica actul
 delay(3300);
 sendCommand(CMD_PLAY_W_INDEX, 0X000E);// la temperatura es de
 delay(1500);
+
 Serial.println("pide"+temperatura);
- separarNumero(temperatura);
+  separarNumero(temperatura);
 delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X000B);// grados
 sendCommand(CMD_PLAY_W_INDEX, 0X000C);// centigrados
 delay(3200);
 sendCommand(CMD_PLAY_W_INDEX, 0X0012);// nubes al
 delay(3300);
-unoa15(nubes);
+  unoa15(nubes);
 
  */
 
 Serial.println("------------------------------------------------------------");
 
 
- float tempf = kelvinToCelcius(temperatura);
- String tempSf = String(tempf);
+float tempf = kelvinToCelcius(temperatura);
+String tempSf = String(tempf);
 
 
 Serial.println("Se espera comvertir "+tempSf);
@@ -184,24 +178,13 @@ delay(10);
 Serial.println("segundo valor d e la cadena"+temperaturaChar[1]);
 delay(100);
 
-dictar(tempSf);
+  dictar(tempSf);
  
-
   Serial.println("Cerrando la conexión");
  
   while(1){
     delay(0); 
   }
-
-
-
-
-
-
-
-
-
-
 
   
 }// fin de loop
@@ -209,18 +192,17 @@ dictar(tempSf);
 String GetInfo( String line, String t1, String t2 ){   
   
   int n = line.indexOf( t1 );
-       if (n)
-          {    line = line.substring(n);         //Despreciamos la parte inicial de S
+       if (n){    line = line.substring(n);         //Despreciamos la parte inicial de S
                int k = line.indexOf( t2 );    // Buscamos la siguiente coma
                String var = line.substring(t1.length() , k);
                line = line.substring( k+1);  // Recortamos S
                return(var);
-           }
-   }// fin get info
+      }
+}// fin get info
 
 
 
-   void sendCommand(int8_t command, int16_t dat) { 
+void sendCommand(int8_t command, int16_t dat) { 
 delay(20); 
 Send_buf[0] = 0x7e; //starting byte 
 Send_buf[1] = 0xff; //version 
@@ -230,11 +212,11 @@ Send_buf[4] = 0x00;//0x00 = no feedback, 0x01 = feedback
 Send_buf[5] = (int8_t)(dat >> 8);//datah 
 Send_buf[6] = (int8_t)(dat); //datal 
 Send_buf[7] = 239; //ending byte 
-for(uint8_t i=0; i<8; i++)// 
-{ 
-  mySerial.write(Send_buf[i]) ; 
-  Serial.println(Send_buf[i]);
-} 
+  for(uint8_t i=0; i<8; i++)// 
+  { 
+    mySerial.write(Send_buf[i]) ; 
+    Serial.println(Send_buf[i]);
+  } 
 }// fin send command 
 
 
@@ -245,7 +227,6 @@ float numero = kelvinToCelcius(numeroCadena);
 
 Serial.println("----------------Temperatura numero: ");
 Serial.print(numero);
-
 
 switch((int)numero){
 
@@ -307,9 +288,6 @@ delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X001F);// nueve
 break;
 
-
-
-/////
 
 case 30:
 sendCommand(CMD_PLAY_W_INDEX, 0X0029);// treinta
@@ -427,8 +405,6 @@ return temperatura;
 }// fin kelvin to celcius
 
 
-
-
 void unoa15(String numeroCadena){
 Serial.println(numeroCadena[0]);
 
@@ -440,60 +416,51 @@ Serial.println(charPrimerDigito-48);
 Serial.print("*");
 Serial.print("sale");
 
+
+switch(numeroCadena.charAt(0) ){///////////////////////////////////////////////////////////////isue
  
-switch(numeroCadena.charAt(0) ){
- 
-switch(charPrimerDigito){
+      switch(charPrimerDigito){
 
 
 
-case 49:
+      case 49:
+      sendCommand(CMD_PLAY_W_INDEX, 0X0017);// uno
+      break;
 
-sendCommand(CMD_PLAY_W_INDEX, 0X0017);// uno
-break;
+      case 50:
+      sendCommand(CMD_PLAY_W_INDEX, 0X0018);// dos
+      break;
 
-case 50:
+      case 51:
+      sendCommand(CMD_PLAY_W_INDEX, 0X0019);// tres
+      break;
 
-sendCommand(CMD_PLAY_W_INDEX, 0X0018);// dos
-break;
+      case 52:
+      sendCommand(CMD_PLAY_W_INDEX, 0X001A);// cuatr
+      break;
 
-case 51:
+      case 53:
+      sendCommand(CMD_PLAY_W_INDEX, 0X001B);// cinco
+      break;
 
-sendCommand(CMD_PLAY_W_INDEX, 0X0019);// tres
-break;
+      case 54:
+      sendCommand(CMD_PLAY_W_INDEX, 0X001C);// seis
+      break;
 
-case 52:
+      case 55:
+      sendCommand(CMD_PLAY_W_INDEX, 0X001D);// siete
+      break;
 
-sendCommand(CMD_PLAY_W_INDEX, 0X001A);// cuatr
-break;
+      case 56:
+      sendCommand(CMD_PLAY_W_INDEX, 0X001E);// ocho
+      break;
 
-case 53:
-
-sendCommand(CMD_PLAY_W_INDEX, 0X001B);// cinco
-break;
-
-case 54:
-
-sendCommand(CMD_PLAY_W_INDEX, 0X001C);// seis
-break;
-
-case 55:
-
-sendCommand(CMD_PLAY_W_INDEX, 0X001D);// siete
-break;
-
-case 56:
-
-sendCommand(CMD_PLAY_W_INDEX, 0X001E);// ocho
-break;
-
-case 57:
-
-sendCommand(CMD_PLAY_W_INDEX, 0X001F);// nueve
-break;
+      case 57:
+      sendCommand(CMD_PLAY_W_INDEX, 0X001F);// nueve
+      break;
 
 
-}// fin de switch
+      }// fin de switch
 delay(1000);
 sendCommand(CMD_PLAY_W_INDEX, 0X000F);// porciento
 
@@ -556,11 +523,11 @@ void dictar(String cadena){
             break;
             
             case 80:
-            
+            sendCommand(CMD_PLAY_W_INDEX, 0X0033);// ochenta
             break;
             
             case 90:
-            
+            sendCommand(CMD_PLAY_W_INDEX, 0X0035);// noventa 
             break;
 
 
