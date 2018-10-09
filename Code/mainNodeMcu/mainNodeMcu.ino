@@ -505,8 +505,7 @@ sendCommand(CMD_PLAY_W_INDEX, 0X000F);// porciento
  
 
 
-void dictar(String cadena)
-{
+void dictar(String cadena){
  
   Serial.println("---------------");
 
@@ -521,58 +520,112 @@ void dictar(String cadena)
    
  
 
-if(String(sdEntero)==0)
-{
+    if(String(sdEntero)==0)   //---MKSEDA0
+      {
 
-//terminacion cero
-  
-}else{
-  //normal
+      //terminacion cero
 
-switch(pdEntero){
-  
-  case 1:
-  Serial.println("dieci");
-  break;
 
-  case 2:
-  Serial.println("veinti");
-  break;
-  
-  case 3:
-  Serial.println("veinti");
-  break;
 
-  case 4:
-  Serial.println("veinti");
-  break;
 
-  case 5:
-  Serial.println("veinti");
-  break;
 
-  case 6:
-  Serial.println("veinti");
-  break;
 
-  case 7:
-  Serial.println("veinti");
-  break;
+        
+        
+      }else{                    // -- MKSEDA0  MKSEDA0E
+        //normal
 
-  case 8:
-  Serial.println("veinti");
-  break;
+                  if(String(sdEntero)>15){   // -- MKSEMAQ
 
-  case 9:
-  Serial.println("veinti");
-  break;
 
-}
+                                switch(pdEntero){     // MKSpdEntero
+                                  
+                                  case 1:
+                                  sendCommand(CMD_PLAY_W_INDEX, 0X0026);// diesi
+                                  break;
 
-  
-}
+                                  case 2:
+                                  sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
+                                  break;
+                                  
+                                  case 3:
+                                  sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
+                                  break;
 
-  
+                                  case 4:
+                                  sendCommand(CMD_PLAY_W_INDEX, 0X002C);// cuarentai
+                                  break;
+
+                                  case 5:
+                                  sendCommand(CMD_PLAY_W_INDEX, 0X002E);// cincuentai
+                                  break;
+
+                                  case 6:
+                                  sendCommand(CMD_PLAY_W_INDEX, 0X0030);// sesentai
+                                  break;
+
+                                  case 7:
+                                  sendCommand(CMD_PLAY_W_INDEX, 0X0032);// setentai
+                                  break;
+
+                                  case 8:
+                                  sendCommand(CMD_PLAY_W_INDEX, 0X0034);// ochentai
+                                  break;
+
+                                  case 9:
+                                  sendCommand(CMD_PLAY_W_INDEX, 0X0036);// noventai
+                                  break;
+
+                                }// FIN DEMKSpdEntero 
+
+                                delay(500);
+                                
+                                switch(sdEntero){     // MKSpdEntero
+                                  
+                                  case 1:
+                                  sendCommand(CMD_PLAY_W_INDEX, 0X0017);// uno
+                                  break;
+
+                                  case 2:
+                                  sendCommand(CMD_PLAY_W_INDEX, 0X0018);// dos
+                                  break;
+                                  
+                                  case 3:
+                                  sendCommand(CMD_PLAY_W_INDEX, 0X0019);// tres
+                                  break;
+
+                                  case 4:
+                                  sendCommand(CMD_PLAY_W_INDEX, 0X001A);// cuatr
+                                  break;
+
+                                  case 5:
+                                  sendCommand(CMD_PLAY_W_INDEX, 0X001B);// cinco
+                                  break;
+
+                                  case 6:
+                                  sendCommand(CMD_PLAY_W_INDEX, 0X001C);// seis
+                                  break;
+
+                                  case 7:
+                                  sendCommand(CMD_PLAY_W_INDEX, 0X001D);// siete
+                                  break;
+
+                                  case 8:
+                                  sendCommand(CMD_PLAY_W_INDEX, 0X001E);// ocho
+                                  break;
+
+                                  case 9:
+                                  sendCommand(CMD_PLAY_W_INDEX, 0X001F);// nueve
+                                  break;
+
+                                }// FIN DEMKSpdEntero 
+
+
+                    
+                  }// fin de MKSEDA0E
+                  else{unoa15}
+        }// FIN DE  -- MKSEMAQ
+        
 
 }//fin dictar
 
