@@ -151,7 +151,7 @@ sendCommand(CMD_PLAY_W_INDEX, 0X000E);// la temperatura es de
 delay(1500);
 
 Serial.println("pide"+temperatura);
-  separarNumero(temperatura);
+  //separarNumero(temperatura);
 delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X000B);// grados
 sendCommand(CMD_PLAY_W_INDEX, 0X000C);// centigrados
@@ -417,7 +417,7 @@ Serial.print("*");
 Serial.print("sale");
 
 
-switch(numeroCadena.charAt(0) ){///////////////////////////////////////////////////////////////isue
+switch(numeroCadena.charAt(0) ){
  
       switch(charPrimerDigito){
 
