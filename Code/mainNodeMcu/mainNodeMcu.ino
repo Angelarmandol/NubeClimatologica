@@ -525,12 +525,55 @@ void dictar(String cadena){
 
       //terminacion cero
 
+          switch(pdEntero){  //-MKSTE0
+
+            case 10:
+            sendCommand(CMD_PLAY_W_INDEX, 0X0020);// dies
+            break;
+            
+            case 20:
+            
+            break;
+
+            case 30:
+            
+            break;
+            
+            case 40:
+            
+            break;
+            
+            case 50:
+            
+            break;
+            
+            case 60:
+            
+            break;
+            
+            case 60:
+            
+            break;
+            
+            case 70:
+            
+            break;
+            
+            case 80:
+            
+            break;
+            
+            case 90:
+            
+            break;
+
+
+          } // din de --MKSTE0
 
 
 
 
 
-        
         
       }else{                    // -- MKSEDA0  MKSEDA0E
         //normal
