@@ -473,7 +473,8 @@ sendCommand(CMD_PLAY_W_INDEX, 0X000F);// porciento
 
 
 void dictar(String cadena){
- 
+ int sdEntero = 0;
+
   Serial.println("--------metodo disctar -------");
 
   char pd = cadena.charAt(0);
@@ -484,28 +485,32 @@ void dictar(String cadena){
 
   String auxiliar1= String(pd);
   String auxiliar2= String(sd);
+  float pdEntero1 = auxiliar1.toInt();
+  float sdEntero1 =  auxiliar2.toInt();
 
-
-  float pdEntero = aulixiliar1.toInt();
-  float sdEntero =  auxiliar2.toInt();
-
-  
- Serial.println("se supone  que : " +pdEntero);
-
+  int pdEntero = auxiliar1.toInt();
+  Serial.println("se supone  que : " );
+  Serial.println(sdEntero1);
+  Serial.println("se supone que dos");
+  Serial.println(pdEntero);
+ 
  
    ////////////////////////
 
    
- Serial.println("segundo entero antes de if el valor es de: "+String(sdEntero)+" Primer entero antes de if: "+String(pdEntero));
+ Serial.println("segundo entero antes de if el valor es de: ");
+ Serial.println(sdEntero);
+ Serial.println("Primer entero antes de if: ");
+ Serial.println(pdEntero);
 
 
 ////////////////////////
 
+
     if(sdEntero==0)   //---MKSEDA0
       {
 
-        Serial.println("Segudo digito es 20");
-
+       
       //terminacion cero
 
           switch(pdEntero){  //-MKSTE0
@@ -516,7 +521,7 @@ void dictar(String cadena){
             
             case 20:
             sendCommand(CMD_PLAY_W_INDEX, 0X0027);// veinte
-            Serial.println("Se detecto 20");
+            
             break;
 
             case 30:
@@ -558,12 +563,14 @@ void dictar(String cadena){
       }else{                    // -- MKSEDA0  MKSEDA0E
         //normal
 
-Serial.println("Entra a la decision de numeros, con el primer valor: "+String(sdEntero));
-Serial.println("Entra a la decision de numeros, con el primer valor: "+pdEntero);
+Serial.println("Entra a la decision de numeros, con el primer valor: "+String(sdEntero1));
+Serial.println("Entra a la decision de numeros, con el primer valor: ");
+Serial.println(pdEntero1);
  
 ///Serial.println("intneto de conversion segundo digito: ");
                 
-
+Serial.println("pdEntero: ");
+Serial.println(pdEntero);
 
                                 switch(pdEntero){     // MKSpdEntero
                                   
@@ -579,7 +586,7 @@ Serial.println("Entra a la decision de numeros, con el primer valor: "+pdEntero)
                                   sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
                                   Serial.println("Treintai***********");
                                   break;
-/*
+ 
                                   case 4:
                                   sendCommand(CMD_PLAY_W_INDEX, 0X002C);// cuarentai
                                   break;
@@ -646,7 +653,7 @@ Serial.println("Entra a la decision de numeros, con el primer valor: "+pdEntero)
                                   sendCommand(CMD_PLAY_W_INDEX, 0X001F);// nueve
                                   break;
 
-                                  */
+                                   
                                   
 
                                 }// FIN DEMKSpdEntero 
