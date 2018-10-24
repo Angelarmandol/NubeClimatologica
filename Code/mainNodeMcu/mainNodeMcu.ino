@@ -474,7 +474,7 @@ sendCommand(CMD_PLAY_W_INDEX, 0X000F);// porciento
 
 void dictar(String cadena){
  
-  Serial.println("---------------");
+  Serial.println("--------metodo disctar -------");
 
   char pd = cadena.charAt(0);
   char sd = cadena.charAt(1);
@@ -492,7 +492,7 @@ void dictar(String cadena){
 
 ////////////////////////
 
-    if(String(sdEntero)==0)   //---MKSEDA0
+    if(sdEntero==0)   //---MKSEDA0
       {
 
         Serial.println("Segudo digito es 20");
