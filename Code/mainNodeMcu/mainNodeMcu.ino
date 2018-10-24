@@ -144,13 +144,14 @@ String cielo = GetInfo( line, "description\":\"", "\",") ;
 Serial.println("cielo "+cielo);
 
 
- /* MEtodo 
+
 sendCommand(CMD_PLAY_W_INDEX, 0X0013);// condicion climatica actul
 delay(3300);
 sendCommand(CMD_PLAY_W_INDEX, 0X000E);// la temperatura es de
 delay(1500);
 
 Serial.println("pide"+temperatura);
+dictar("20");
   //separarNumero(temperatura);
 delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X000B);// grados
@@ -159,8 +160,7 @@ delay(3200);
 sendCommand(CMD_PLAY_W_INDEX, 0X0012);// nubes al
 delay(3300);
   unoa15(nubes);
-
- */
+ 
 
 Serial.println("------------------------------------------------------------");
 
@@ -484,11 +484,18 @@ void dictar(String cadena){
   int pdEntero =(int) String(pd).toInt();
   int sdEntero = (int) String(sd).toInt();
  
+   ////////////////////////
+
    
- 
+ Serial.println("segundo entero antes de if el valor es de: "+String(sdEntero)+" Primer entero antes de if: "+String(pdEntero));
+
+
+////////////////////////
 
     if(String(sdEntero)==0)   //---MKSEDA0
       {
+
+        Serial.println("Segudo digito es 20");
 
       //terminacion cero
 
@@ -500,6 +507,7 @@ void dictar(String cadena){
             
             case 20:
             sendCommand(CMD_PLAY_W_INDEX, 0X0027);// veinte
+            Serial.println("Se detecto 20");
             break;
 
             case 30:
@@ -541,7 +549,7 @@ void dictar(String cadena){
       }else{                    // -- MKSEDA0  MKSEDA0E
         //normal
 
-                  if(String(sdEntero)>15){   // -- MKSEMAQ
+                  if(sdEntero>15){   // -- MKSEMAQ
 
 
                                 switch(pdEntero){     // MKSpdEntero
@@ -629,9 +637,12 @@ void dictar(String cadena){
 
                     
                   }// fin de MKSEDA0E
-                  else{unoa15}
+                  else{
+  unoa15;
+  }
+                  
         }// FIN DE  -- MKSEMAQ
-        
+
 
 }//fin dictar
 
