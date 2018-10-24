@@ -481,8 +481,17 @@ void dictar(String cadena){
 
   Serial.println("primer digito char: "+String(pd)+" segundo digito char es: "+String(sd));
 
-  int pdEntero =(int) String(pd).toInt();
-  int sdEntero = (int) String(sd).toInt();
+
+  String auxiliar1= String(pd);
+  String auxiliar2= String(sd);
+
+
+  float pdEntero = aulixiliar1.toInt();
+  float sdEntero =  auxiliar2.toInt();
+
+  
+ Serial.println("se supone  que : " +pdEntero);
+
  
    ////////////////////////
 
@@ -549,23 +558,28 @@ void dictar(String cadena){
       }else{                    // -- MKSEDA0  MKSEDA0E
         //normal
 
-                  if(sdEntero>15){   // -- MKSEMAQ
+Serial.println("Entra a la decision de numeros, con el primer valor: "+String(sdEntero));
+Serial.println("Entra a la decision de numeros, con el primer valor: "+pdEntero);
+ 
+///Serial.println("intneto de conversion segundo digito: ");
+                
 
 
                                 switch(pdEntero){     // MKSpdEntero
                                   
-                                  case 1:
+                                  case '1':
                                   sendCommand(CMD_PLAY_W_INDEX, 0X0026);// diesi
                                   break;
 
-                                  case 2:
+                                  case '2':
                                   sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
                                   break;
                                   
-                                  case 3:
+                                  case '3':
                                   sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
+                                  Serial.println("Treintai***********");
                                   break;
-
+/*
                                   case 4:
                                   sendCommand(CMD_PLAY_W_INDEX, 0X002C);// cuarentai
                                   break;
@@ -632,17 +646,16 @@ void dictar(String cadena){
                                   sendCommand(CMD_PLAY_W_INDEX, 0X001F);// nueve
                                   break;
 
+                                  */
+                                  
+
                                 }// FIN DEMKSpdEntero 
 
 
                     
                   }// fin de MKSEDA0E
-                  else{
-  unoa15;
-  }
-                  
-        }// FIN DE  -- MKSEMAQ
-
+               
+        
 
 }//fin dictar
 
