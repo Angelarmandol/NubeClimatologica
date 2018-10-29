@@ -167,10 +167,15 @@ sendCommand(CMD_PLAY_W_INDEX, 0X000B);// grados
 sendCommand(CMD_PLAY_W_INDEX, 0X000C);// centigrados
 delay(3200);
 sendCommand(CMD_PLAY_W_INDEX, 0X0012);// nubes al
-delay(500);
+delay(900);
 Serial.println("nubes al ");
 dictar(nubes);
-
+sendCommand(CMD_PLAY_W_INDEX, 0X000F);// porciento
+delay(3200);
+sendCommand(CMD_PLAY_W_INDEX, 0X000D);// humedad esta al
+delay(2000);
+dictar(humedad);
+delay(900);
 sendCommand(CMD_PLAY_W_INDEX, 0X000F);// porciento
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -326,27 +331,27 @@ if(cadena.length() < 2){
                                         case 1:
       
                                         sendCommand(CMD_PLAY_W_INDEX, 0X0026);// diesi
-                                        delay(100);
+                                        delay(300);
                                         break;
       
                                         case 2:
                                         sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
-                                        delay(00);
+                                        delay(300);
                                         break;
                                         
                                         case 3:
                                         sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
-                                        delay(100);
+                                        delay(300);
                                         break;
        
                                         case 4:
                                         sendCommand(CMD_PLAY_W_INDEX, 0X002C);// cuarentai
-                                        delay(100);
+                                        delay(300);
                                         break;
       
                                         case 5:
                                         sendCommand(CMD_PLAY_W_INDEX, 0X002E);// cincuentai
-                                        delay(100);
+                                        delay(500);
                                         break;
       
                                         case 6:
