@@ -151,35 +151,36 @@ sendCommand(CMD_PLAY_W_INDEX, 0X000E);// la temperatura es de
 delay(1500);
 
 Serial.println("pide"+temperatura);
-dictar("20");
-  //separarNumero(temperatura);
+
+
+
+
+
+ /////////////////////////separarNumero(temperatura);
 delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X000B);// grados
 sendCommand(CMD_PLAY_W_INDEX, 0X000C);// centigrados
 delay(3200);
 sendCommand(CMD_PLAY_W_INDEX, 0X0012);// nubes al
 delay(3300);
-  unoa15(nubes);
  
-
-Serial.println("------------------------------------------------------------");
-
 
 float tempf = kelvinToCelcius(temperatura);
 String tempSf = String(tempf);
 
 
- 
 char temperaturaChar [4];
 tempSf.toCharArray(temperaturaChar, 4);
+
+Serial.println("valor de tempSf: "+tempSf);
+
+dictar(tempSf);
 
 Serial.println("priimer valor d e la cadena"+temperaturaChar[0]);
 delay(10);
 Serial.println("segundo valor d e la cadena"+temperaturaChar[1]);
 delay(100);
 
-  dictar(tempSf);
- 
   Serial.println("Cerrando la conexión");
  
   while(1){
@@ -220,175 +221,7 @@ Send_buf[7] = 239; //ending byte
 }// fin send command 
 
 
-
-void separarNumero(String numeroCadena){
  
-float numero = kelvinToCelcius(numeroCadena);
- 
-
-switch((int)numero){
-
-case 20:
-sendCommand(CMD_PLAY_W_INDEX, 0X0027);// veinte
-break;
-
-case 21:
-sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X0017);// uno
-break;
-
-case 22:
-sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X0018);// dos
-break;
-
-case 23:
-sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X0019);// tres
-break;
-
-case 24:
-sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X001A);// cuatr
-break;
-
-case 25:
-sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X001B);// cinco
-break;
-
-case 26:
-sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X001C);// seis
-break;
-
-case 27:
-sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X001D);// siete
-break;
-
-case 28:
-sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X001E);// ocho
-break;
-
-case 29:
-sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X001F);// nueve
-break;
-
-
-case 30:
-sendCommand(CMD_PLAY_W_INDEX, 0X0029);// treinta
-break;
-
-case 31:
-sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X0017);// uno
-break;
-
-case 32:
-sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X0018);// dos
-break;
-
-case 33:
-sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X0019);// tres
-break;
-
-case 34:
-sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X001A);// cuatr
-break;
-
-case 35:
-sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X001B);// cinco
-break;
-
-case 36:
-sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X001C);// seis
-break;
-
-case 37:
-sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X001D);// siete
-break;
-
-case 38:
-sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X001E);// ocho
-break;
-
-case 39:
-sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X001F);// nueve
-break;
-
-case 40:
-sendCommand(CMD_PLAY_W_INDEX, 0X002B);// cuarenta
-
-break;
-
-case 41:
-sendCommand(CMD_PLAY_W_INDEX, 0X002C);// cuarentai
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X0017);// uno
-break;
-
-case 42:
-sendCommand(CMD_PLAY_W_INDEX, 0X002C);// cuarentai
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X0018);// dos
-break;
-
-case 43:
-sendCommand(CMD_PLAY_W_INDEX, 0X002C);// cuarentai
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X0019);// tres
-break;
-
-case 44:
-sendCommand(CMD_PLAY_W_INDEX, 0X002C);// cuarentai
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X001A);// cuatr
-break;
-case 45:
-sendCommand(CMD_PLAY_W_INDEX, 0X002C);// cuarentai
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X001B);// cinco
-break;
-}// fin de switch
-
-
- 
-  
-}//fin separar numero
-
-
-
-
-
 float kelvinToCelcius(String numeroCadenak){
 //Serial.println("combertir "+numeroCadenak);
 float temperatura; 
@@ -403,64 +236,7 @@ return temperatura;
 }// fin kelvin to celcius
 
 
-void unoa15(String numeroCadena){
- 
-numeroCadena=numeroCadena+"";
-int charPrimerDigito = numeroCadena[0]+0;
- 
 
-
-switch(numeroCadena.charAt(0) ){
- 
-      switch(charPrimerDigito){
-
-
-
-      case 49:
-      sendCommand(CMD_PLAY_W_INDEX, 0X0017);// uno
-      break;
-
-      case 50:
-      sendCommand(CMD_PLAY_W_INDEX, 0X0018);// dos
-      break;
-
-      case 51:
-      sendCommand(CMD_PLAY_W_INDEX, 0X0019);// tres
-      break;
-
-      case 52:
-      sendCommand(CMD_PLAY_W_INDEX, 0X001A);// cuatr
-      break;
-
-      case 53:
-      sendCommand(CMD_PLAY_W_INDEX, 0X001B);// cinco
-      break;
-
-      case 54:
-      sendCommand(CMD_PLAY_W_INDEX, 0X001C);// seis
-      break;
-
-      case 55:
-      sendCommand(CMD_PLAY_W_INDEX, 0X001D);// siete
-      break;
-
-      case 56:
-      sendCommand(CMD_PLAY_W_INDEX, 0X001E);// ocho
-      break;
-
-      case 57:
-      sendCommand(CMD_PLAY_W_INDEX, 0X001F);// nueve
-      break;
-
-
-      }// fin de switch
-delay(1000);
-sendCommand(CMD_PLAY_W_INDEX, 0X000F);// porciento
-
-  
-}// fin segundo switch
-
-}
 
  
 
@@ -476,19 +252,28 @@ void dictar(String cadena){
   float pdEntero1 = auxiliar1.toInt();
   float sdEntero1 =  auxiliar2.toInt();
   int pdEntero = auxiliar1.toInt();
- 
+
+  Serial.println("temperatura es:");
+  Serial.println(cadena);
+         Serial.println("Segunod igito entero:**********");
+         Serial.println(sdEntero);    
+         Serial.println("*******************");
     if(sdEntero==0)   //---MKSEDA0
       {
    
       //terminacion cero
-
+         Serial.println("Primer igito entero:**********");
+         Serial.println(pdEntero);    
+         Serial.println("*******************");
           switch(pdEntero){  //-MKSTE0
 
             case 10:
             sendCommand(CMD_PLAY_W_INDEX, 0X0020);// dies
+                Serial.println("****************************roger 110");
             break;
             
             case 20:
+            Serial.println("****************************roger");
             sendCommand(CMD_PLAY_W_INDEX, 0X0027);// veinte
             
             break;
