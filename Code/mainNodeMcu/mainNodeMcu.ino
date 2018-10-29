@@ -151,20 +151,6 @@ sendCommand(CMD_PLAY_W_INDEX, 0X000E);// la temperatura es de
 delay(1500);
 
 Serial.println("pide"+temperatura);
-
-
-
-
-
- /////////////////////////separarNumero(temperatura);
-delay(500);
-sendCommand(CMD_PLAY_W_INDEX, 0X000B);// grados
-sendCommand(CMD_PLAY_W_INDEX, 0X000C);// centigrados
-delay(3200);
-sendCommand(CMD_PLAY_W_INDEX, 0X0012);// nubes al
-delay(3300);
- 
-
 float tempf = kelvinToCelcius(temperatura);
 String tempSf = String(tempf);
 
@@ -176,10 +162,17 @@ Serial.println("valor de tempSf: "+tempSf);
 
 dictar(tempSf);
 
-Serial.println("priimer valor d e la cadena"+temperaturaChar[0]);
-delay(10);
-Serial.println("segundo valor d e la cadena"+temperaturaChar[1]);
-delay(100);
+
+ /////////////////////////separarNumero(temperatura);
+delay(500);
+sendCommand(CMD_PLAY_W_INDEX, 0X000B);// grados
+sendCommand(CMD_PLAY_W_INDEX, 0X000C);// centigrados
+delay(3200);
+sendCommand(CMD_PLAY_W_INDEX, 0X0012);// nubes al
+delay(3300);
+
+ 
+
 
   Serial.println("Cerrando la conexión");
  
@@ -244,6 +237,8 @@ return temperatura;
 void dictar(String cadena){
  int sdEntero = 0;
 
+ int mq15 = cadena.toInt();
+
   char pd = cadena.charAt(0);
   char sd = cadena.charAt(1);
 
@@ -251,160 +246,248 @@ void dictar(String cadena){
   String auxiliar2= String(sd);
   float pdEntero1 = auxiliar1.toInt();
   float sdEntero1 =  auxiliar2.toInt();
-  int pdEntero = auxiliar1.toInt();
+  int pdEntero2 = auxiliar1.toInt();
+  int sdEntero2 = auxiliar2.toInt();
 
-  Serial.println("temperatura es:");
-  Serial.println(cadena);
-         Serial.println("Segunod igito entero:**********");
-         Serial.println(sdEntero);    
-         Serial.println("*******************");
-    if(sdEntero==0)   //---MKSEDA0
+    if(sdEntero2==0)   //---MKSEDA0
       {
    
       //terminacion cero
-         Serial.println("Primer igito entero:**********");
-         Serial.println(pdEntero);    
-         Serial.println("*******************");
-          switch(pdEntero){  //-MKSTE0
+ 
+          switch(pdEntero2){  //-MKSTE0
 
             case 10:
             sendCommand(CMD_PLAY_W_INDEX, 0X0020);// dies
-                Serial.println("****************************roger 110");
+            delay(100);
             break;
             
             case 20:
-            Serial.println("****************************roger");
             sendCommand(CMD_PLAY_W_INDEX, 0X0027);// veinte
-            
+            delay(100);
             break;
 
             case 30:
             sendCommand(CMD_PLAY_W_INDEX, 0X0029);// treinta
+            delay(100);
             break;
             
             case 40:
             sendCommand(CMD_PLAY_W_INDEX, 0X002B);// cuarenta
+            delay(100);
             break;
             
             case 50:
             sendCommand(CMD_PLAY_W_INDEX, 0X002D);// cincuenta
+            delay(100);
             break;
             
             case 60:
             sendCommand(CMD_PLAY_W_INDEX, 0X002F);// sesenta
+            delay(100);
             break;
         
             case 70:
             sendCommand(CMD_PLAY_W_INDEX, 0X0031);// setenta
+            delay(100);
             break;
             
             case 80:
             sendCommand(CMD_PLAY_W_INDEX, 0X0033);// ochenta
+            delay(100);
             break;
             
             case 90:
             sendCommand(CMD_PLAY_W_INDEX, 0X0035);// noventa 
+            delay(100);
             break;
 
 
           } // din de --MKSTE0
 
-
-
-        
       }else{                    // -- MKSEDA0  MKSEDA0E
         //normal
 
-///Serial.println("intneto de conversion segundo digito: ");
-                
-
-                                switch(pdEntero){     // MKSpdEntero
-                                  
-                                  case '1':
-                                  sendCommand(CMD_PLAY_W_INDEX, 0X0026);// diesi
-                                  break;
-
-                                  case '2':
-                                  sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
-                                  break;
-                                  
-                                  case '3':
-                                  sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
-                                  Serial.println("Treintai***********");
-                                  break;
- 
-                                  case 4:
-                                  sendCommand(CMD_PLAY_W_INDEX, 0X002C);// cuarentai
-                                  break;
-
-                                  case 5:
-                                  sendCommand(CMD_PLAY_W_INDEX, 0X002E);// cincuentai
-                                  break;
-
-                                  case 6:
-                                  sendCommand(CMD_PLAY_W_INDEX, 0X0030);// sesentai
-                                  break;
-
-                                  case 7:
-                                  sendCommand(CMD_PLAY_W_INDEX, 0X0032);// setentai
-                                  break;
-
-                                  case 8:
-                                  sendCommand(CMD_PLAY_W_INDEX, 0X0034);// ochentai
-                                  break;
-
-                                  case 9:
-                                  sendCommand(CMD_PLAY_W_INDEX, 0X0036);// noventai
-                                  break;
-
-                                }// FIN DEMKSpdEntero 
-
-                                delay(500);
+                                if(mq15<=15){
+                                 unoA15(mq15);
+                                }else{
                                 
-                                switch(sdEntero){     // MKSpdEntero
-                                  
-                                  case 1:
-                                  sendCommand(CMD_PLAY_W_INDEX, 0X0017);// uno
-                                  break;
-
-                                  case 2:
-                                  sendCommand(CMD_PLAY_W_INDEX, 0X0018);// dos
-                                  break;
-                                  
-                                  case 3:
-                                  sendCommand(CMD_PLAY_W_INDEX, 0X0019);// tres
-                                  break;
-
-                                  case 4:
-                                  sendCommand(CMD_PLAY_W_INDEX, 0X001A);// cuatr
-                                  break;
-
-                                  case 5:
-                                  sendCommand(CMD_PLAY_W_INDEX, 0X001B);// cinco
-                                  break;
-
-                                  case 6:
-                                  sendCommand(CMD_PLAY_W_INDEX, 0X001C);// seis
-                                  break;
-
-                                  case 7:
-                                  sendCommand(CMD_PLAY_W_INDEX, 0X001D);// siete
-                                  break;
-
-                                  case 8:
-                                  sendCommand(CMD_PLAY_W_INDEX, 0X001E);// ocho
-                                  break;
-
-                                  case 9:
-                                  sendCommand(CMD_PLAY_W_INDEX, 0X001F);// nueve
-                                  break;
-         
-
-                                }// FIN DEMKSpdEntero 
-
+                                      switch(pdEntero2){     // MKSpdEntero
+                                        
+                                        case 1:
+      
+                                        sendCommand(CMD_PLAY_W_INDEX, 0X0026);// diesi
+                                        delay(100);
+                                        break;
+      
+                                        case 2:
+                                        sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
+                                        delay(00);
+                                        break;
+                                        
+                                        case 3:
+                                        sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
+                                        delay(100);
+                                        break;
+       
+                                        case 4:
+                                        sendCommand(CMD_PLAY_W_INDEX, 0X002C);// cuarentai
+                                        delay(100);
+                                        break;
+      
+                                        case 5:
+                                        sendCommand(CMD_PLAY_W_INDEX, 0X002E);// cincuentai
+                                        delay(100);
+                                        break;
+      
+                                        case 6:
+                                        sendCommand(CMD_PLAY_W_INDEX, 0X0030);// sesentai
+                                        delay(100);
+                                        break;
+      
+                                        case 7:
+                                        sendCommand(CMD_PLAY_W_INDEX, 0X0032);// setentai
+                                        delay(100);
+                                        break;
+      
+                                        case 8:
+                                        sendCommand(CMD_PLAY_W_INDEX, 0X0034);// ochentai
+                                        delay(100);
+                                        break;
+      
+                                        case 9:
+                                        sendCommand(CMD_PLAY_W_INDEX, 0X0036);// noventai
+                                        delay(100);
+                                        break;
+      
+                                    
+                                      }// FIN DEMKSpdEntero 
+      
+                                      delay(500);
+                                      
+                                      switch(sdEntero2){     // MKSpdEntero
+                                        
+                                        case 1:
+                                        sendCommand(CMD_PLAY_W_INDEX, 0X0017);// uno
+                                        delay(100);
+                                        break;
+      
+                                        case 2:
+                                        sendCommand(CMD_PLAY_W_INDEX, 0X0018);// dos
+                                        delay(100);
+                                        break;
+                                        
+                                        case 3:
+                                        sendCommand(CMD_PLAY_W_INDEX, 0X0019);// tres
+                                        delay(100);
+                                        break;
+      
+                                        case 4:
+                                        sendCommand(CMD_PLAY_W_INDEX, 0X001A);// cuatr
+                                        delay(100);
+                                        break;
+      
+                                        case 5:
+                                        sendCommand(CMD_PLAY_W_INDEX, 0X001B);// cinco
+                                        delay(100);
+                                        break;
+      
+                                        case 6:
+                                        sendCommand(CMD_PLAY_W_INDEX, 0X001C);// seis
+                                        delay(100);
+                                        break;
+      
+                                        case 7:
+                                        sendCommand(CMD_PLAY_W_INDEX, 0X001D);// siete
+                                        delay(100);
+                                        break;
+      
+                                        case 8:
+                                        sendCommand(CMD_PLAY_W_INDEX, 0X001E);// ocho
+                                        delay(100);
+                                        break;
+      
+                                        case 9:
+                                        sendCommand(CMD_PLAY_W_INDEX, 0X001F);// nueve
+                                        delay(100);
+                                        break;
+               
+      
+                                      }// FIN DEMKSpdEntero 
+                                }
                   }// fin de MKSEDA0E
 
 }//fin dictar
+
+
+void unoA15(int numero){
+
+
+      
+      switch(numero){
+        
+      case 1:
+      sendCommand(CMD_PLAY_W_INDEX, 0X0017);// uno
+      delay(100);
+      break;
+      case 2:
+      sendCommand(CMD_PLAY_W_INDEX, 0X0018);// dos
+      delay(100);
+      break;
+      case 3:
+      sendCommand(CMD_PLAY_W_INDEX, 0X0019);// tres
+      delay(100);
+      break;
+      case 4:
+      sendCommand(CMD_PLAY_W_INDEX, 0X001A);// cuatr
+      delay(100);
+      break;
+      case 5:
+      sendCommand(CMD_PLAY_W_INDEX, 0X001B);// cinco
+      delay(100);
+      break;
+      case 6:
+      sendCommand(CMD_PLAY_W_INDEX, 0X001C);// seis
+      delay(100);
+      break;
+      case 7:
+      sendCommand(CMD_PLAY_W_INDEX, 0X001D);// siete
+      delay(100);
+      break;
+      case 8:
+      sendCommand(CMD_PLAY_W_INDEX, 0X001E);// ocho
+      delay(100);
+      break;
+      case 9:
+      sendCommand(CMD_PLAY_W_INDEX, 0X001F);// nueve
+      delay(100);
+      break;
+      case 10:
+      sendCommand(CMD_PLAY_W_INDEX, 0X0020);// diez
+      delay(100);
+      break;
+      case 11:
+      sendCommand(CMD_PLAY_W_INDEX, 0X0021);// once
+      delay(100);
+      break;
+      case 12:
+      sendCommand(CMD_PLAY_W_INDEX, 0X0022);// doce
+      delay(100);
+      break;
+      case 13:
+      sendCommand(CMD_PLAY_W_INDEX, 0X0023);// trece
+      delay(100);
+      break;
+      case 14:
+      sendCommand(CMD_PLAY_W_INDEX, 0X0024);// catorce
+      delay(100);
+      break;
+      case 15:
+      sendCommand(CMD_PLAY_W_INDEX, 0X0025);// quince
+      delay(100);
+      break;
+  }
+      
+}
 
 
 
