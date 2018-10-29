@@ -144,6 +144,7 @@ String cielo = GetInfo( line, "description\":\"", "\",") ;
 Serial.println("cielo "+cielo);
 
 
+////////////////////////////////////////////////////////////////////////////////////////
 
 sendCommand(CMD_PLAY_W_INDEX, 0X0013);// condicion climatica actul
 delay(3300);
@@ -153,26 +154,25 @@ delay(1500);
 Serial.println("pide"+temperatura);
 float tempf = kelvinToCelcius(temperatura);
 String tempSf = String(tempf);
-
-
+ 
 char temperaturaChar [4];
 tempSf.toCharArray(temperaturaChar, 4);
 
 Serial.println("valor de tempSf: "+tempSf);
 
 dictar(tempSf);
-
-
- /////////////////////////separarNumero(temperatura);
+ 
 delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X000B);// grados
 sendCommand(CMD_PLAY_W_INDEX, 0X000C);// centigrados
 delay(3200);
 sendCommand(CMD_PLAY_W_INDEX, 0X0012);// nubes al
-delay(3300);
+delay(500);
+Serial.println("nubes al ");
+dictar(nubes);
 
- 
-
+sendCommand(CMD_PLAY_W_INDEX, 0X000F);// porciento
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   Serial.println("Cerrando la conexión");
  
@@ -236,18 +236,30 @@ return temperatura;
 
 void dictar(String cadena){
  int sdEntero = 0;
-
+int pdEntero2 =0;
+ int sdEntero2 =0;
  int mq15 = cadena.toInt();
-
-  char pd = cadena.charAt(0);
+String auxiliar1="";
+char pd ='0';
+if(cadena.length() < 2){
+  
+    pd = cadena.charAt(0);
+    auxiliar1= String(pd);
+    pdEntero2 = auxiliar1.toInt();
+    sdEntero2 = pdEntero2;
+}else{
+  pd = cadena.charAt(0);
   char sd = cadena.charAt(1);
 
-  String auxiliar1= String(pd);
+  auxiliar1= String(pd);
   String auxiliar2= String(sd);
+  
   float pdEntero1 = auxiliar1.toInt();
   float sdEntero1 =  auxiliar2.toInt();
-  int pdEntero2 = auxiliar1.toInt();
-  int sdEntero2 = auxiliar2.toInt();
+  pdEntero2 = auxiliar1.toInt();
+  sdEntero2 = auxiliar2.toInt();
+
+}
 
     if(sdEntero2==0)   //---MKSEDA0
       {
@@ -306,11 +318,9 @@ void dictar(String cadena){
 
       }else{                    // -- MKSEDA0  MKSEDA0E
         //normal
-
                                 if(mq15<=15){
                                  unoA15(mq15);
                                 }else{
-                                
                                       switch(pdEntero2){     // MKSpdEntero
                                         
                                         case 1:
@@ -421,69 +431,69 @@ void dictar(String cadena){
 
 void unoA15(int numero){
 
-
+Serial.println("unoa15entra: ");
       
       switch(numero){
         
       case 1:
       sendCommand(CMD_PLAY_W_INDEX, 0X0017);// uno
-      delay(100);
+      delay(500);
       break;
       case 2:
       sendCommand(CMD_PLAY_W_INDEX, 0X0018);// dos
-      delay(100);
+      delay(500);
       break;
       case 3:
       sendCommand(CMD_PLAY_W_INDEX, 0X0019);// tres
-      delay(100);
+      delay(500);
       break;
       case 4:
       sendCommand(CMD_PLAY_W_INDEX, 0X001A);// cuatr
-      delay(100);
+      delay(500);
       break;
       case 5:
       sendCommand(CMD_PLAY_W_INDEX, 0X001B);// cinco
-      delay(100);
+      delay(500);
       break;
       case 6:
       sendCommand(CMD_PLAY_W_INDEX, 0X001C);// seis
-      delay(100);
+      delay(500);
       break;
       case 7:
       sendCommand(CMD_PLAY_W_INDEX, 0X001D);// siete
-      delay(100);
+      delay(500);
       break;
       case 8:
       sendCommand(CMD_PLAY_W_INDEX, 0X001E);// ocho
-      delay(100);
+      delay(500);
       break;
       case 9:
       sendCommand(CMD_PLAY_W_INDEX, 0X001F);// nueve
-      delay(100);
+      delay(500);
       break;
       case 10:
       sendCommand(CMD_PLAY_W_INDEX, 0X0020);// diez
-      delay(100);
+      delay(500);
       break;
       case 11:
       sendCommand(CMD_PLAY_W_INDEX, 0X0021);// once
-      delay(100);
+      delay(500);
       break;
       case 12:
       sendCommand(CMD_PLAY_W_INDEX, 0X0022);// doce
-      delay(100);
+      delay(500);
       break;
       case 13:
       sendCommand(CMD_PLAY_W_INDEX, 0X0023);// trece
-      delay(100);
+      delay(500);
       break;
       case 14:
       sendCommand(CMD_PLAY_W_INDEX, 0X0024);// catorce
-      delay(100);
+      delay(500);
       break;
       case 15:
       sendCommand(CMD_PLAY_W_INDEX, 0X0025);// quince
-      delay(100);
+      delay(500);
       break;
   }
       
