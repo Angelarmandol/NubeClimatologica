@@ -169,7 +169,7 @@ float tempf = kelvinToCelcius(temperatura);
 String tempSf = String(tempf);
 
 
-Serial.println("Se espera comvertir "+tempSf);
+ 
 char temperaturaChar [4];
 tempSf.toCharArray(temperaturaChar, 4);
 
@@ -222,11 +222,9 @@ Send_buf[7] = 239; //ending byte
 
 
 void separarNumero(String numeroCadena){
-Serial.println("entra");
+ 
 float numero = kelvinToCelcius(numeroCadena);
-
-Serial.println("----------------Temperatura numero: ");
-Serial.print(numero);
+ 
 
 switch((int)numero){
 
@@ -406,15 +404,10 @@ return temperatura;
 
 
 void unoa15(String numeroCadena){
-Serial.println(numeroCadena[0]);
-
+ 
 numeroCadena=numeroCadena+"";
 int charPrimerDigito = numeroCadena[0]+0;
-Serial.println("entra");
-Serial.print("*");
-Serial.println(charPrimerDigito-48);
-Serial.print("*");
-Serial.print("sale");
+ 
 
 
 switch(numeroCadena.charAt(0) ){
@@ -475,42 +468,18 @@ sendCommand(CMD_PLAY_W_INDEX, 0X000F);// porciento
 void dictar(String cadena){
  int sdEntero = 0;
 
-  Serial.println("--------metodo disctar -------");
-
   char pd = cadena.charAt(0);
   char sd = cadena.charAt(1);
-
-  Serial.println("primer digito char: "+String(pd)+" segundo digito char es: "+String(sd));
-
 
   String auxiliar1= String(pd);
   String auxiliar2= String(sd);
   float pdEntero1 = auxiliar1.toInt();
   float sdEntero1 =  auxiliar2.toInt();
-
   int pdEntero = auxiliar1.toInt();
-  Serial.println("se supone  que : " );
-  Serial.println(sdEntero1);
-  Serial.println("se supone que dos");
-  Serial.println(pdEntero);
  
- 
-   ////////////////////////
-
-   
- Serial.println("segundo entero antes de if el valor es de: ");
- Serial.println(sdEntero);
- Serial.println("Primer entero antes de if: ");
- Serial.println(pdEntero);
-
-
-////////////////////////
-
-
     if(sdEntero==0)   //---MKSEDA0
       {
-
-       
+   
       //terminacion cero
 
           switch(pdEntero){  //-MKSTE0
@@ -557,20 +526,12 @@ void dictar(String cadena){
 
 
 
-
-
         
       }else{                    // -- MKSEDA0  MKSEDA0E
         //normal
 
-Serial.println("Entra a la decision de numeros, con el primer valor: "+String(sdEntero1));
-Serial.println("Entra a la decision de numeros, con el primer valor: ");
-Serial.println(pdEntero1);
- 
 ///Serial.println("intneto de conversion segundo digito: ");
                 
-Serial.println("pdEntero: ");
-Serial.println(pdEntero);
 
                                 switch(pdEntero){     // MKSpdEntero
                                   
@@ -652,17 +613,11 @@ Serial.println(pdEntero);
                                   case 9:
                                   sendCommand(CMD_PLAY_W_INDEX, 0X001F);// nueve
                                   break;
-
-                                   
-                                  
+         
 
                                 }// FIN DEMKSpdEntero 
 
-
-                    
                   }// fin de MKSEDA0E
-               
-        
 
 }//fin dictar
 
