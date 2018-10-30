@@ -71,6 +71,12 @@ delay(200);//wait for 200ms
   Serial.println("WiFi connected"); 
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP()); 
+
+
+digitalWrite(start, 0);
+
+
+  
 }
  
 void loop() {
