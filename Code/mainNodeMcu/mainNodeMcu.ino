@@ -144,6 +144,8 @@ String cielo = GetInfo( line, "description\":\"", "\",") ;
 Serial.println("cielo "+cielo);
 
 
+
+
 ////////////////////////////////////////////////////////////////////////////////////////
 
 sendCommand(CMD_PLAY_W_INDEX, 0X0013);// condicion climatica actul
@@ -172,6 +174,8 @@ Serial.println("nubes al ");
 dictar(nubes);
 sendCommand(CMD_PLAY_W_INDEX, 0X000F);// porciento
 delay(3200);
+mainCondition(climaMain, cielo);
+delay(2000);
 sendCommand(CMD_PLAY_W_INDEX, 0X000D);// humedad esta al
 delay(2000);
 dictar(humedad);
@@ -331,22 +335,22 @@ if(cadena.length() < 2){
                                         case 1:
       
                                         sendCommand(CMD_PLAY_W_INDEX, 0X0026);// diesi
-                                        delay(300);
+                                        delay(500);
                                         break;
       
                                         case 2:
                                         sendCommand(CMD_PLAY_W_INDEX, 0X0028);// veinti
-                                        delay(300);
+                                        delay(500);
                                         break;
                                         
                                         case 3:
                                         sendCommand(CMD_PLAY_W_INDEX, 0X002A);// treintai
-                                        delay(300);
+                                        delay(500);
                                         break;
        
                                         case 4:
                                         sendCommand(CMD_PLAY_W_INDEX, 0X002C);// cuarentai
-                                        delay(300);
+                                        delay(500);
                                         break;
       
                                         case 5:
@@ -356,29 +360,31 @@ if(cadena.length() < 2){
       
                                         case 6:
                                         sendCommand(CMD_PLAY_W_INDEX, 0X0030);// sesentai
-                                        delay(100);
+                                        delay(500);
                                         break;
       
                                         case 7:
                                         sendCommand(CMD_PLAY_W_INDEX, 0X0032);// setentai
-                                        delay(100);
+                                        delay(500);
                                         break;
       
                                         case 8:
                                         sendCommand(CMD_PLAY_W_INDEX, 0X0034);// ochentai
-                                        delay(100);
+                                        delay(500);
                                         break;
       
                                         case 9:
                                         sendCommand(CMD_PLAY_W_INDEX, 0X0036);// noventai
-                                        delay(100);
+                                        delay(500);
                                         break;
       
                                     
                                       }// FIN DEMKSpdEntero 
       
                                       delay(500);
-                                      
+
+                                      Serial.println("sdEntero2");
+                                      Serial.println(sdEntero2);
                                       switch(sdEntero2){     // MKSpdEntero
                                         
                                         case 1:
@@ -507,7 +513,62 @@ Serial.println("unoa15entra: ");
 
 
  
+void mainCondition(String main, String description){
 
+ Serial.println("Entra mainCondition");
+ Serial.println("main es: "+main);
+
+
+if(main.equals("Clear")){
+
+if(description.equals("Clear sky")){
+sendCommand(CMD_PLAY_W_INDEX, 0X0003); 
+}
+
+}
+
+ if(main.equals("Clouds")){
+
+      if(description.equals("few clouds")){
+      
+        sendCommand(CMD_PLAY_W_INDEX, 0X0004); 
+      }
+      
+      if(description.equals("scattered clouds")){
+      
+        sendCommand(CMD_PLAY_W_INDEX, 0X0004); 
+      }
+      
+      if(description.equals("broken clouds")){
+      
+        sendCommand(CMD_PLAY_W_INDEX, 0X0005); 
+      }
+      
+      if(description.equals("overcast clouds")){
+      
+        sendCommand(CMD_PLAY_W_INDEX, 0X0005); 
+      }
+
+}
+
+ if(main.equals("Rain")){
+  if(description.equals("light rain") || description.equals("moderate rain")){
+      
+        sendCommand(CMD_PLAY_W_INDEX, 0X0006); 
+      }else{
+        sendCommand(CMD_PLAY_W_INDEX, 0X0007); 
+      }
+  
+
+  
+}
+
+ if(main.equals("Thunderstorm")){
+  sendCommand(CMD_PLAY_W_INDEX, 0X0008); 
+}
+ 
+ 
+}
 
 
   
