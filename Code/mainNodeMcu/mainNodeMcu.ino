@@ -324,7 +324,6 @@ if(cadena.length() < 2){
             break;
 
             case 3:
-            Serial.println("Treinta''''''''''''''''''''''''''");
             sendCommand(CMD_PLAY_W_INDEX, 0X0029);// treinta
             delay(100);
             break;
@@ -558,8 +557,8 @@ void mainCondition(String main, String description){
 
 
 if(main.equals("Clear")){
-
-if(description.equals("Clear sky")){
+Serial.println("entra primer main, description es: "+description);
+if(description.equals("clear sky")){
 sendCommand(CMD_PLAY_W_INDEX, 0X0003); 
 }
 
