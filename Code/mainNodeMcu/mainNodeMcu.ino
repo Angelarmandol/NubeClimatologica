@@ -205,19 +205,19 @@ sendCommand(CMD_PLAY_W_INDEX, 0X000F);// porciento
   while(1){
 
 
-    digitalWrite(start, 0);
+    digitalWrite(start, 1);
 
 delay(2);
-digitalWrite(start, 1);
+digitalWrite(start, 0);
 
 delay(10);
-digitalWrite(start, 0);
-
-delay(68);
 digitalWrite(start, 1);
 
-delay(500);
+delay(68);
 digitalWrite(start, 0);
+
+delay(500);
+digitalWrite(start, 1);
 
 
 
