@@ -313,47 +313,48 @@ if(cadena.length() < 2){
  
           switch(pdEntero2){  //-MKSTE0
 
-            case 10:
+            case 1:
             sendCommand(CMD_PLAY_W_INDEX, 0X0020);// dies
             delay(100);
             break;
             
-            case 20:
+            case 2:
             sendCommand(CMD_PLAY_W_INDEX, 0X0027);// veinte
             delay(100);
             break;
 
-            case 30:
+            case 3:
+            Serial.println("Treinta''''''''''''''''''''''''''");
             sendCommand(CMD_PLAY_W_INDEX, 0X0029);// treinta
             delay(100);
             break;
             
-            case 40:
+            case 4:
             sendCommand(CMD_PLAY_W_INDEX, 0X002B);// cuarenta
             delay(100);
             break;
             
-            case 50:
+            case 5:
             sendCommand(CMD_PLAY_W_INDEX, 0X002D);// cincuenta
             delay(100);
             break;
             
-            case 60:
+            case 6:
             sendCommand(CMD_PLAY_W_INDEX, 0X002F);// sesenta
             delay(100);
             break;
         
-            case 70:
+            case 7:
             sendCommand(CMD_PLAY_W_INDEX, 0X0031);// setenta
             delay(100);
             break;
             
-            case 80:
+            case 8:
             sendCommand(CMD_PLAY_W_INDEX, 0X0033);// ochenta
             delay(100);
             break;
             
-            case 90:
+            case 9:
             sendCommand(CMD_PLAY_W_INDEX, 0X0035);// noventa 
             delay(100);
             break;
