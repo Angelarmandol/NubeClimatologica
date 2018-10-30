@@ -389,47 +389,48 @@ if(cadena.length() < 2){
                                         
                                         case 1:
                                         sendCommand(CMD_PLAY_W_INDEX, 0X0017);// uno
-                                        delay(100);
+                                        delay(600);
                                         break;
       
                                         case 2:
                                         sendCommand(CMD_PLAY_W_INDEX, 0X0018);// dos
-                                        delay(100);
+                                        delay(600);
                                         break;
                                         
                                         case 3:
                                         sendCommand(CMD_PLAY_W_INDEX, 0X0019);// tres
-                                        delay(100);
+                                        delay(600);
                                         break;
       
                                         case 4:
                                         sendCommand(CMD_PLAY_W_INDEX, 0X001A);// cuatr
-                                        delay(100);
+                                        delay(600);
                                         break;
       
                                         case 5:
+                                        Serial.println("cinco  ");
                                         sendCommand(CMD_PLAY_W_INDEX, 0X001B);// cinco
-                                        delay(100);
+                                        delay(600);
                                         break;
       
                                         case 6:
                                         sendCommand(CMD_PLAY_W_INDEX, 0X001C);// seis
-                                        delay(100);
+                                        delay(600);
                                         break;
       
                                         case 7:
                                         sendCommand(CMD_PLAY_W_INDEX, 0X001D);// siete
-                                        delay(100);
+                                        delay(600);
                                         break;
       
                                         case 8:
                                         sendCommand(CMD_PLAY_W_INDEX, 0X001E);// ocho
-                                        delay(100);
+                                        delay(600);
                                         break;
       
                                         case 9:
                                         sendCommand(CMD_PLAY_W_INDEX, 0X001F);// nueve
-                                        delay(100);
+                                        delay(600);
                                         break;
                
       
