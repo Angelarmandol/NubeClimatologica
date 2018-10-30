@@ -42,9 +42,9 @@ const char* apiKey = "171f3d5eed4e72c670326a5f9ef80990";
  StaticJsonBuffer<200> jsonBuffer;
 String sunrise;
 String line;
- 
+int start = 0;
 void setup() {
-
+ pinMode(start, OUTPUT);
 Serial.begin(9600);
 mySerial.begin(9600);//Start our Serial coms for our serial monitor! 
 delay(500);//Wait chip initialization is complete 
@@ -147,7 +147,24 @@ Serial.println("cielo "+cielo);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
+digitalWrite(start, 0);
 
+delay(500);
+digitalWrite(start, 1);
+
+delay(500);
+digitalWrite(start, 0);
+
+delay(500);
+digitalWrite(start, 1);
+
+delay(500);
+digitalWrite(start, 0);
+
+delay(500);
+digitalWrite(start, 1);
+
+delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X0013);// condicion climatica actul
 delay(3300);
 sendCommand(CMD_PLAY_W_INDEX, 0X000E);// la temperatura es de
@@ -179,13 +196,32 @@ delay(2000);
 sendCommand(CMD_PLAY_W_INDEX, 0X000D);// humedad esta al
 delay(2000);
 dictar(humedad);
-delay(900);
+delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X000F);// porciento
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   Serial.println("Cerrando la conexión");
  
   while(1){
+
+
+    digitalWrite(start, 0);
+
+delay(2);
+digitalWrite(start, 1);
+
+delay(10);
+digitalWrite(start, 0);
+
+delay(68);
+digitalWrite(start, 1);
+
+delay(500);
+digitalWrite(start, 0);
+
+
+
+
     delay(0); 
   }
 
