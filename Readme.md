@@ -5,6 +5,9 @@ https://github.com/bblanchon/ArduinoJson
 
 Introducción
 
+-------------
+
+
 El proyecto trata sobre una nube de algodón que contendrá la electrónica necesaria para dictar por medio de una voz pregrabada la predicción meteorológica actual y a futuro realizando un show de luces relativo a la situación. Esta información será recibida a través de internet y podrá ser configurada por medio de un smartphone por medio de wifi o bluetooth.
 
 Desarrollo
