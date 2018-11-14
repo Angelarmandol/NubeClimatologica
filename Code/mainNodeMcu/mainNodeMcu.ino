@@ -153,6 +153,29 @@ Serial.println("cielo "+cielo);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
+Serial.println("38");
+sendCommand(CMD_PLAY_W_INDEX, 0X0038);
+delay(1000);
+
+ Serial.println("39");
+sendCommand(CMD_PLAY_W_INDEX, 0X0039);
+delay(1000);
+
+Serial.println("40");
+sendCommand(CMD_PLAY_W_INDEX, 0X0040);
+delay(1000);
+
+Serial.println("41");
+sendCommand(CMD_PLAY_W_INDEX, 0X0041);
+delay(1000);
+
+
+Serial.println("42");
+sendCommand(CMD_PLAY_W_INDEX, 0X0042);
+delay(1000);
+
+
+delay(1000);
 digitalWrite(start, 0);
 
 delay(500);
@@ -534,7 +557,7 @@ Serial.println("unoa15entra: ");
       delay(500);
       break;
       case 12:
-      sendCommand(CMD_PLAY_W_INDEX, 0X0022);// doce
+      sendCommand(CMD_PLAY_W_INDEX, 0X0021);// doce
       delay(500);
       break;
       case 13:
