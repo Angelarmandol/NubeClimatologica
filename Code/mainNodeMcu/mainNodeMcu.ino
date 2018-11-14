@@ -153,26 +153,9 @@ Serial.println("cielo "+cielo);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
-Serial.println("38");
-sendCommand(CMD_PLAY_W_INDEX, 0X0038);
-delay(1000);
-
- Serial.println("39");
-sendCommand(CMD_PLAY_W_INDEX, 0X0039);
-delay(1000);
-
-Serial.println("40");
-sendCommand(CMD_PLAY_W_INDEX, 0X0040);
-delay(1000);
-
-Serial.println("41");
-sendCommand(CMD_PLAY_W_INDEX, 0X0041);
-delay(1000);
 
 
-Serial.println("42");
-sendCommand(CMD_PLAY_W_INDEX, 0X0042);
-delay(1000);
+
 
 
 delay(1000);
@@ -227,6 +210,12 @@ delay(2000);
 dictar(humedad);
 delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X000F);// porciento
+
+
+delay(5000);
+sendCommand(CMD_PLAY_W_INDEX, 0X0038);
+delay(900);
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   Serial.println("Cerrando la conexión");
