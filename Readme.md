@@ -101,11 +101,6 @@ La información formateada se recibirá en un módulo NodeMCU a través de una p
 
 
 
-
-Imagen 1.0 Ejemplo del archivo JSON
-
-
-
 Opciones de clima
 Dia soleado; Se iluminara por completo la nube
 Dia nublado; La iluminación será tenue
@@ -143,8 +138,6 @@ LM389
 Bocina 3W
 Leds blanco ultrabrillante
 Leds azul ultrabrillante
-Placa fenolica
-Modulo HC-06 (opcional)
 Adaptador de corriente AC o circuito de carga de batería
 Algodón
 Tela blanca
