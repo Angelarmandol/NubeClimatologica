@@ -30,3 +30,4 @@ sendCommand(CMD_PLAY_W_INDEX, 0X0033);// ochenta
 sendCommand(CMD_PLAY_W_INDEX, 0X0034);// ochentai
 sendCommand(CMD_PLAY_W_INDEX, 0X0035);// noventa 
 sendCommand(CMD_PLAY_W_INDEX, 0X0036);// noventai
+sendCommand(CMD_PLAY_W_INDEX, 0X0038);// tormenta

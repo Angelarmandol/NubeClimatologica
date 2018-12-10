@@ -1,9 +1,12 @@
-***Links para IDE Arduino
+### Links para IDE Arduino
 http://arduino.esp8266.com/stable/package_esp8266com_index.json
 
 https://github.com/bblanchon/ArduinoJson
 
 Introducción
+
+-------------
+
 
 El proyecto trata sobre una nube de algodón que contendrá la electrónica necesaria para dictar por medio de una voz pregrabada la predicción meteorológica actual y a futuro realizando un show de luces relativo a la situación. Esta información será recibida a través de internet y podrá ser configurada por medio de un smartphone por medio de wifi o bluetooth.
 
@@ -98,11 +101,6 @@ La información formateada se recibirá en un módulo NodeMCU a través de una p
 
 
 
-
-Imagen 1.0 Ejemplo del archivo JSON
-
-
-
 Opciones de clima
 Dia soleado; Se iluminara por completo la nube
 Dia nublado; La iluminación será tenue
@@ -140,8 +138,6 @@ LM389
 Bocina 3W
 Leds blanco ultrabrillante
 Leds azul ultrabrillante
-Placa fenolica
-Modulo HC-06 (opcional)
 Adaptador de corriente AC o circuito de carga de batería
 Algodón
 Tela blanca

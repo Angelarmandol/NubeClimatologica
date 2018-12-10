@@ -71,6 +71,12 @@ delay(200);//wait for 200ms
   Serial.println("WiFi connected"); 
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP()); 
+
+
+digitalWrite(start, 0);
+
+
+  
 }
  
 void loop() {
@@ -147,6 +153,12 @@ Serial.println("cielo "+cielo);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+delay(1000);
 digitalWrite(start, 0);
 
 delay(500);
@@ -198,6 +210,12 @@ delay(2000);
 dictar(humedad);
 delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X000F);// porciento
+
+
+delay(5000);
+sendCommand(CMD_PLAY_W_INDEX, 0X0038);
+delay(900);
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   Serial.println("Cerrando la conexión");
@@ -313,47 +331,47 @@ if(cadena.length() < 2){
  
           switch(pdEntero2){  //-MKSTE0
 
-            case 10:
+            case 1:
             sendCommand(CMD_PLAY_W_INDEX, 0X0020);// dies
             delay(100);
             break;
             
-            case 20:
+            case 2:
             sendCommand(CMD_PLAY_W_INDEX, 0X0027);// veinte
             delay(100);
             break;
 
-            case 30:
+            case 3:
             sendCommand(CMD_PLAY_W_INDEX, 0X0029);// treinta
             delay(100);
             break;
             
-            case 40:
+            case 4:
             sendCommand(CMD_PLAY_W_INDEX, 0X002B);// cuarenta
             delay(100);
             break;
             
-            case 50:
+            case 5:
             sendCommand(CMD_PLAY_W_INDEX, 0X002D);// cincuenta
             delay(100);
             break;
             
-            case 60:
+            case 6:
             sendCommand(CMD_PLAY_W_INDEX, 0X002F);// sesenta
             delay(100);
             break;
         
-            case 70:
+            case 7:
             sendCommand(CMD_PLAY_W_INDEX, 0X0031);// setenta
             delay(100);
             break;
             
-            case 80:
+            case 8:
             sendCommand(CMD_PLAY_W_INDEX, 0X0033);// ochenta
             delay(100);
             break;
             
-            case 90:
+            case 9:
             sendCommand(CMD_PLAY_W_INDEX, 0X0035);// noventa 
             delay(100);
             break;
@@ -528,7 +546,7 @@ Serial.println("unoa15entra: ");
       delay(500);
       break;
       case 12:
-      sendCommand(CMD_PLAY_W_INDEX, 0X0022);// doce
+      sendCommand(CMD_PLAY_W_INDEX, 0X0021);// doce
       delay(500);
       break;
       case 13:
@@ -557,8 +575,8 @@ void mainCondition(String main, String description){
 
 
 if(main.equals("Clear")){
-
-if(description.equals("Clear sky")){
+Serial.println("entra primer main, description es: "+description);
+if(description.equals("clear sky")){
 sendCommand(CMD_PLAY_W_INDEX, 0X0003); 
 }
 
