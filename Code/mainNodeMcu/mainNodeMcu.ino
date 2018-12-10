@@ -147,7 +147,22 @@ Serial.println("cielo "+cielo);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////
+digitalWrite(start, 0);
 
+delay(500);
+digitalWrite(start, 1);
+
+delay(500);
+digitalWrite(start, 0);
+
+delay(500);
+digitalWrite(start, 1);
+
+delay(500);
+digitalWrite(start, 0);
+
+delay(500);
+digitalWrite(start, 1);
 
 delay(500);
 sendCommand(CMD_PLAY_W_INDEX, 0X0013);// condicion climatica actul
@@ -190,19 +205,22 @@ sendCommand(CMD_PLAY_W_INDEX, 0X000F);// porciento
   while(1){
 
 
+    digitalWrite(start, 1);
 
+delay(2);
+digitalWrite(start, 0);
 
+delay(10);
 digitalWrite(start, 1);
+
 delay(68);
-
 digitalWrite(start, 0);
-delay(700);
 
+delay(500);
 digitalWrite(start, 1);
-delay(600);
 
-digitalWrite(start, 0);
-delay(50);
+
+
 
     delay(0); 
   }
